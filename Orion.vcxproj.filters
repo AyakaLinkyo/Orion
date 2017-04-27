@@ -23,9 +23,6 @@
     <ClInclude Include="GameLogo.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameMain.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -36,6 +33,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Direct3D.h" />
+    <ClInclude Include="GameMain.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -48,9 +48,6 @@
     <ClCompile Include="GameLogo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="GameMain.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Direct3D.cpp" />
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

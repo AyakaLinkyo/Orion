@@ -1,8 +1,8 @@
 //**********************************//
 //*	GameMain.h
-//*	‘g‚İ—§‚Ä
-//*	2017.4.25
-//*	N.Shibayama
+//*	ƒV[ƒ“ŠÇ—
+//*	2017.4.27
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #pragma once
@@ -22,15 +22,18 @@ enum Scene
 	OVER
 };
 
-class GameMain:public GameBase
+
+class GameMain
 {
-public:
-	GameBase* m_base;
 public:
 	GameMain();
 	~GameMain();
-	void InitializeGame();
-	void UpdateGame();
-	wchar_t* RenderGame();//	•`‰æ‚·‚é
-	void FinalizeGame();
+	void Scene();
+	wchar_t* Output();
+	GameBase* m_base;
+
+
+private:
+
 };
+

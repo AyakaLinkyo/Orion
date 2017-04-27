@@ -38,7 +38,6 @@ void Game::Initialize(HWND window, int width, int height)
 	Direct3D_InitDevice(window);
 	DirectXTK_Initialize();
 	m_gamemain = new GameMain();
-	m_gamemain->InitializeGame();
 
     // TODO: Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
@@ -65,7 +64,7 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
-	m_gamemain->UpdateGame();
+	m_gamemain->Scene();
 
     elapsedTime;
 }
@@ -87,7 +86,7 @@ void Game::Render()
 	m_spriteBatch->Begin();
 
 	//const wchar_t* output = L"Hello World";
-	const wchar_t* output = m_gamemain->RenderGame();
+	const wchar_t* output = m_gamemain->Output();
 
 
 	//Vector2 origin = m_font->MeasureString(output) / 2.f;

@@ -2,7 +2,7 @@
 //*	GameLogo.cpp
 //*	ƒƒSƒV[ƒ“
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #include "GameLogo.h"
@@ -24,13 +24,18 @@ GameLogo::~GameLogo()
 
 }
 
-void GameLogo::UpdateGame()
+int GameLogo::UpdateGame()
 {
 	m_TimeCnt++;
+	m_NextScene = LOGO;
+	m_scene = LOGO;
+
 	if (m_TimeCnt > 120)
 	{
 		m_NextScene = TITLE;
 	}
+	return m_NextScene;
+
 }
 
 wchar_t* GameLogo::RenderGame()

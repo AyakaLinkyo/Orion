@@ -2,7 +2,7 @@
 //*	GameTitle.cpp
 //*	タイトルシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #include "GameTitle.h"
@@ -24,14 +24,18 @@ GameTitle::~GameTitle()
 
 }
 
-void GameTitle::UpdateGame()
+int GameTitle::UpdateGame()
 {
 	m_TimeCnt++;
+	m_NextScene = TITLE;
+	m_scene = TITLE;
+
 	if (m_TimeCnt > 120)
 	{
 		m_NextScene = PLAY;
 	}
 
+	return m_NextScene;
 }
 
 wchar_t * GameTitle::RenderGame()

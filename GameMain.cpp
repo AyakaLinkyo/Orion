@@ -1,44 +1,32 @@
 //**********************************//
 //*	GameMain.cpp
-//*	組み立て
-//*	2017.4.25
-//*	N.Shibayama
+//*	シーン管理
+//*	2017.4.27
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
-#include "DirectXTK.h"
-#include "GameMain.h"
 #include "pch.h"
+#include "GameMain.h"
 
 
 GameMain::GameMain()
 {
-	m_TimeCnt = 0;
-	m_NextScene = LOGO;
 	m_base = new GameLogo();
 }
 
+
 GameMain::~GameMain()
 {
-	delete m_base;
 }
 
-void GameMain::InitializeGame()
+void GameMain::Scene()
 {
-	
-}
-
-void GameMain::UpdateGame()
-{	
-
-	m_base->UpdateGame();
-
-	//シーン管理
-	if (m_base->m_scene != m_base->m_NextScene)
+	int next_scene;
+	next_scene = m_base->UpdateGame();
+	if (m_base->m_scene != next_scene)
 	{
-		m_scene = m_NextScene;
-		//次のシーンを制作する関数を呼び出す
-		//シーン振り分け
-		switch (m_scene)
+
+		switch (next_scene)
 		{
 		case LOGO:
 			m_base = new GameLogo();
@@ -55,18 +43,13 @@ void GameMain::UpdateGame()
 		case OVER:
 			m_base = new GameOver();
 			break;
-
 		}
-
-	}	
-
+	}
 }
 
-wchar_t* GameMain::RenderGame()
+wchar_t * GameMain::Output()
 {
-	return m_base->RenderGame();
-}
-
-void GameMain::FinalizeGame()
-{
+	wchar_t* output;
+	output = m_base->RenderGame();
+	return output;
 }

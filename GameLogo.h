@@ -2,7 +2,7 @@
 //*	GameLogo.h
 //*	ロゴシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #pragma once
@@ -13,6 +13,6 @@ class GameLogo :public GameBase
 public:
 	GameLogo();	//	コンストラクタ
 	~GameLogo();	//	デストラクタ
-	void UpdateGame();	//	データの更新
+	int UpdateGame();	//	データの更新
 	wchar_t* RenderGame();//	描画する
 };

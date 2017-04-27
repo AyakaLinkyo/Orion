@@ -2,7 +2,7 @@
 //*	GameOver.cpp
 //*	オーバーシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #include "GameOver.h"
@@ -24,9 +24,17 @@ GameOver::~GameOver()
 
 }
 
-void GameOver::UpdateGame()
+int GameOver::UpdateGame()
 {
+	m_TimeCnt++;
+	m_NextScene = OVER;
+	m_scene = OVER;
+	if (m_TimeCnt > 120)
+	{
+		m_NextScene = TITLE;
+	}
 
+	return m_NextScene;
 }
 
 wchar_t * GameOver::RenderGame()

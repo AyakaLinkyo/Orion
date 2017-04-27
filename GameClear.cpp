@@ -2,7 +2,7 @@
 //*	GameClear.cpp
 //*	クリアシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #include "GameClear.h"
@@ -23,26 +23,22 @@ GameClear::~GameClear()
 
 }
 
-void GameClear::UpdateGame()
+int GameClear::UpdateGame()
 {
 	m_TimeCnt++;
+	m_NextScene = CLEAR;
+	m_scene = CLEAR;
+
 	if (m_TimeCnt > 120)
 	{
 		m_NextScene = TITLE;
 	}
+	return m_NextScene;
 }
 
 wchar_t * GameClear::RenderGame()
 {
-	return nullptr;
+	wchar_t* output = L"CLEAR";
+	return output;
 }
 
-//
-//void GameClear::RenderGame()
-//{
-//	wchar_t buf[256];
-//	swprintf_s(buf, 256, L"CLEAR");
-//
-//	g_spriteFont->DrawString(g_spriteBatch.get(), buf, Vector2(100, 0));
-//
-//}

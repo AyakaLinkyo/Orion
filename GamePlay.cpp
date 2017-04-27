@@ -2,7 +2,7 @@
 //*	GamePlay.cpp
 //*	プレイシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #include "GamePlay.h"
@@ -27,16 +27,16 @@ GamePlay::~GamePlay()
 
 int GamePlay::UpdateGame()
 {
-	int nextScene = -1;
-
+	m_NextScene = PLAY;
+	m_scene = PLAY;
+	
 	m_TimeCnt++;
 	if (m_TimeCnt > 120)
 	{
 		m_NextScene = CLEAR;
-		nextScene CLEAR;
 	}
 
-	return nextScene;
+	return m_NextScene;
 }
 
 wchar_t * GamePlay::RenderGame()

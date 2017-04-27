@@ -2,7 +2,7 @@
 //*	GameClear.h
 //*	クリアシーン
 //*	2017.4.25
-//*	N.Shibayama
+//*	N.Shibayama & Ayaka.Y
 //**********************************//
 
 #pragma once
@@ -13,6 +13,6 @@ class GameClear :public GameBase
 public:
 	GameClear();	//	コンストラクタ
 	~GameClear();	//	デストラクタ
-	void UpdateGame();	//	データの更新
+	int UpdateGame();	//	データの更新
 	wchar_t* RenderGame();//	描画する
 };
