@@ -9,6 +9,9 @@
 
 #include "GameMain.h"
 
+#include <WICTextureLoader.h>
+
+
 extern void ExitGame();
 
 using namespace DirectX;
@@ -45,6 +48,31 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
+
+	//	追加部分=================================================================================
+	//	リソース読み込み
+	ComPtr<ID3D11Resource> resource;
+	DX::ThrowIfFailed(
+		CreateWICTextureFromFile(m_d3dDevice.Get(), L"Resouces/clock.png", resource.GetAddressOf(),
+			m_texture.ReleaseAndGetAddressOf()));
+
+	ComPtr<ID3D11Texture2D> cat;
+	DX::ThrowIfFailed(resource.As(&cat));
+
+	CD3D11_TEXTURE2D_DESC catDesc;
+	cat->GetDesc(&catDesc);
+
+	m_origin.x = float(catDesc.Width / 2);
+	m_origin.y = float(catDesc.Height / 2);
+
+	//	表示座標を画面中央に指定
+	m_screenPos.x = m_outputWidth / 2.f;
+	m_screenPos.y = m_outputHeight / 2.f;
+
+
+	//==========================================================================================
+
+
 }
 
 // Executes the basic game loop.
@@ -83,7 +111,17 @@ void Game::Render()
     // TODO: Add your rendering code here.
 	//m_gamemain->RenderGame();
 
-	m_spriteBatch->Begin();
+	//m_spriteBatch->Begin();
+
+	//	追加部分=================================================================================
+	//	スプライトの描画
+	//m_spriteBatch->Begin();
+	CommonStates m_states(m_d3dDevice.Get());
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states.NonPremultiplied());	//NonPremultipliedで不透明の設定
+	m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::White, 0.f, m_origin);
+
+	//==========================================================================================
+
 
 	//const wchar_t* output = L"Hello World";
 	const wchar_t* output = m_gamemain->Output();

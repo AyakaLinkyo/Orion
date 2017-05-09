@@ -6,23 +6,26 @@
 //**********************************//
 
 #pragma once
+#include "Game.h"
 #include "SimpleMath.h"
 #include "ObjectBase.h"
 
 class Clock :public ObjectBase
 {
 protected:
-	bool m_hand;							//Œv‚Ìj(’·j(true)A’Zj(false))
-	DirectX::SimpleMath::Vector2 m_tipPos;	//j‚Ìæ’[À•W
+	bool m_hand;									//Œv‚Ìj(’·j(true)A’Zj(false))
+	DirectX::SimpleMath::Vector2 m_longTipPos;		//’·j‚Ìæ’[À•W
+	DirectX::SimpleMath::Vector2 m_shotTipPos;		//’Zj‚Ìæ’[À•W
 
 public:
 	Clock();
 	~Clock();
-	void Update();								//XV
-	void Render();								//•`‰æ
-	bool getHand();								//j‚Ìó‘Ôæ“¾
-	DirectX::SimpleMath::Vector2 getTipPos();	//j‚Ìæ’[À•Wæ“¾
-	void clockwise();							//j‚ğ‰E‰ñ‚è‚É“®‚©‚·
+	void Update();									//XV
+	void Render();									//•`‰æ
+	bool getHand();									//j‚Ìó‘Ôæ“¾
+	DirectX::SimpleMath::Vector2 getLongTipPos();	//j‚Ìæ’[À•Wæ“¾
+	DirectX::SimpleMath::Vector2 getShotTipPos();	//j‚Ìæ’[À•Wæ“¾
+	void clockwise();								//j‚ğ‰E‰ñ‚è‚É“®‚©‚·
 
 
 };

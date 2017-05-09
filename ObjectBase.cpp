@@ -32,6 +32,8 @@ ObjectBase::~ObjectBase()
 //==================================//
 void ObjectBase::Update()
 {
+	m_posX += m_spdX;
+	m_posY += m_spdY;
 }
 
 //==================================//
