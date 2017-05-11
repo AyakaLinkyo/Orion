@@ -8,9 +8,22 @@
 #include "pch.h"
 #include "Player.h"
 
+using namespace DirectX;
 
 Player::Player()
 {
+	//変数の初期化（値はそれぞれ仮値）
+	pos_x = 0.0f;
+	pos_y = 0.0f;
+	grp_w = GRP_WIDTH;
+	grp_h = GRP_HEIGHT;
+	spd_x = 0.0f;
+	spd_y = 0.0f;
+
+	//キーボードの初期化
+	keyboard = std::make_unique<Keyboard>();
+
+
 }
 
 
@@ -31,6 +44,8 @@ void Player::Needle(DirectX::SimpleMath::Vector2 needle)
 	a = (needle.y - 0) / needle.x;
 }
 
+
+
 //∞------------------------------------------------------------------∞
 //∞*func：針の有無を確認する
 //∞*arg：長針か短針か（長針：true、短針：false）
@@ -45,12 +60,12 @@ bool Player::Existence(bool length)
 	{
 		//長針の場合
 	case true:
-		//針の長さを指定する（仮値）
+		//針の長さを指定する
 		needle_length = 20;
 		break;
 		//短針の場合
 	case false:
-		//針の長さを指定する（仮値）
+		//針の長さを指定する
 		needle_length = 10;
 		break;
 	}
@@ -64,12 +79,37 @@ bool Player::Existence(bool length)
 		{
 			return true;
 		}
-		//プレイヤーの位置が、針の長さより大きいならfalse
+		//プレイヤーの位置が、針の長さより大きい（針から落ちている）ならfalse
 		return false;
 
 	}
 	//針の座標上に居なかったらfalse
 	return false;
+}
+
+
+
+//∞------------------------------------------------------------------∞
+//∞*func：走るモーション
+//∞*arg：なし
+//∞*return：なし
+//∞*heed：組み立て時に、if文で針の情報取得＆針の有無を確認すること
+//∞------------------------------------------------------------------∞
+
+void Player::run()
+{
+	//キーボードの情報取得
+	Keyboard::State key = keyboard->GetState();
+
+	if (key.Left)
+	{
+		pos_x++;
+	}
+	if (key.Right)
+	{
+		pos_x--;
+	}
+
 }
 
 

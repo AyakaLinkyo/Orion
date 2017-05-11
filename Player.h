@@ -7,6 +7,13 @@
 
 #pragma once
 #include "SimpleMath.h"
+#include <Keyboard.h>
+
+
+//キャラの幅、高さ
+const int GRP_WIDTH = 32;
+const int GRP_HEIGHT = 32;
+
 class Player
 {
 public:
@@ -19,13 +26,20 @@ public:
 	//*針の有無を取得する関数
 	bool Existence(bool length);
 
+	//*走る関数
+	void run();
+
 private:
-	float pos_x;
-	float pos_y;
-	int grp_w;
-	int grp_h;
-	float spd_x;
-	float spd_y;
+	float pos_x;		//座標x
+	float pos_y;		//座標y
+	int grp_w;			//キャラの幅
+	int grp_h;			//キャラの高さ
+	float spd_x;		//x軸のスピード
+	float spd_y;		//y軸のスピード
 	float a;
+
+	//キーボード
+	std::unique_ptr<DirectX::Keyboard>keyboard;
+
 };
 
