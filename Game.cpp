@@ -56,18 +56,21 @@ void Game::Initialize(HWND window, int width, int height)
 		CreateWICTextureFromFile(m_d3dDevice.Get(), L"Resouces/clock.png", resource.GetAddressOf(),
 			m_texture.ReleaseAndGetAddressOf()));
 
-	ComPtr<ID3D11Texture2D> cat;
-	DX::ThrowIfFailed(resource.As(&cat));
+	//	リソースから猫のテクスチャと判断
+	ComPtr<ID3D11Texture2D> clock;
+	DX::ThrowIfFailed(resource.As(&clock));
 
-	CD3D11_TEXTURE2D_DESC catDesc;
-	cat->GetDesc(&catDesc);
+	//	テクスチャ情報
+	CD3D11_TEXTURE2D_DESC clockDesc;
+	clock->GetDesc(&clockDesc);
 
-	m_origin.x = float(catDesc.Width / 2);
-	m_origin.y = float(catDesc.Height / 2);
+	//	テクスチャ原点を画像の中心にする
+	m_origin.x = float(clockDesc.Width / 2.0f);
+	m_origin.y = float(clockDesc.Height / 2.0f);
 
 	//	表示座標を画面中央に指定
-	m_screenPos.x = m_outputWidth / 2.f;
-	m_screenPos.y = m_outputHeight / 2.f;
+	m_screenPos.x = m_outputWidth / 2.0f;
+	m_screenPos.y = m_outputHeight / 2.0f;
 
 
 	//==========================================================================================

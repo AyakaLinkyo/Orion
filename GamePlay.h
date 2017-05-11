@@ -7,6 +7,7 @@
 
 #pragma once
 #include "GameBase.h"
+#include "GameMain.h"
 
 class GamePlay :public GameBase
 {
@@ -15,4 +16,5 @@ public:
 	~GamePlay();	//	デストラクタ
 	int UpdateGame();	//	データの更新
 	wchar_t* RenderGame();//	描画する
+
 };
