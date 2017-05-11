@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <RootNamespace>Orion</RootNamespace>
-    <ProjectGuid>{09B56AF6-1E64-4660-A014-ECED2D6F2175}</ProjectGuid>
+    <ProjectGuid>{2AF50BB8-9A25-4368-B8D8-22BED414E492}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
